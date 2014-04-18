@@ -14,6 +14,11 @@ public class XkcdTitleMapper {
 			String title = "";
 
 			while((title = reader.readLine()) != null) {
+				if(i == 100 || i == 404 || i == 1037) {
+					System.out.println("Skipping " + Integer.toString(i));
+					i++;
+				}
+
 				File file = new File("./Comics/" + Integer.toString(i) + ".comic");
 				if(!file.exists())
 					new Thread(new Mapper(title, i)).start();
