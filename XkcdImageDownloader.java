@@ -12,10 +12,15 @@ public class XkcdImageDownloader {
 		try {
 			int i = 1;
 			
-			File file = new File("xkcdImgs.txt");
+			File file = new File("xkcdImages.txt");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 			String link = "";
 			while((link = reader.readLine()) != null) {
+				if(i == 100 || i == 1037 || i == 404) {
+					System.out.println("Skipping " + Integer.toString(i));
+					i++;
+				}
+
 				File file2 = new File("./Images/" + Integer.toString(i) + ".png");
 				
 				if(!file2.exists()) 
